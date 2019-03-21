@@ -1,0 +1,15 @@
+.container_notes {
+  position: absolute;
+  left: 10px;
+  text-align: center;
+  width: 20%;
+  float:left;
+  background-color: #6e9de5;
+}
+
+.note_container_area {
+  position: relative;
+  text-align: center;
+  width: 78%;
+  float: right;
+}
