@@ -1,0 +1,7 @@
+.list {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left:-10pt;
+    width: 100%;
+}

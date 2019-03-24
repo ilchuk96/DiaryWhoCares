@@ -12,7 +12,7 @@ class Note extends React.Component {
 
   render() {
 
-    const { title, classes, content, store, index } = this.props;
+    const { title, classes, content, store, index, currentNoteIndex} = this.props;
 
     const onClick = (e) => {
       e.preventDefault();
@@ -23,9 +23,16 @@ class Note extends React.Component {
       console.log(content);
     };
 
+    var style = styles.note;
+    console.log(index);
+    console.log(currentNoteIndex);
+
+    if(index == currentNoteIndex) {
+      style = styles.choosen_note;
+    }
 
     return (
-      <div className={styles.note} onClick={onClick} onKeyUp={handleKeyUp} role="presentation">
+      <div className={style} onClick={onClick} onKeyUp={handleKeyUp} role="presentation">
         <p className={classes}> {title} </p>
       </div>
     );
@@ -46,7 +53,7 @@ Note.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    currentNoteIndex: state.note.currentNoteIndex
+    currentNoteIndex: state.note.noteIndex
   }
 }
 

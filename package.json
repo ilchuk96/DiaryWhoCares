@@ -1,8 +1,10 @@
 {
-  "name": "electron-react-boilerplate",
-  "productName": "ElectronReact",
-  "version": "0.17.1",
-  "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
+  "name": "crypto-diary",
+  "productName": "CryptoDiary",
+  "version": "0.1.0",
+  "author": "awemath <dart.fk712@gmail.com>",
+  "homepage": "https://crypto-diary.com",
+  "description": "Electron applicatoin for your diary to keep it private.",
   "scripts": {
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
     "build-dll": "cross-env NODE_ENV=development webpack --config ./configs/webpack.config.renderer.dev.dll.babel.js --colors",
@@ -90,12 +92,6 @@
     "directories": {
       "buildResources": "resources",
       "output": "release"
-    },
-    "publish": {
-      "provider": "github",
-      "owner": "electron-react-boilerplate",
-      "repo": "electron-react-boilerplate",
-      "private": false
     }
   },
   "jest": {
@@ -171,7 +167,6 @@
     "flow-bin": "^0.77.0",
     "flow-runtime": "^0.17.0",
     "flow-typed": "^2.5.1",
-    "husky": "^1.1.4",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.5.0",
     "lint-staged": "^8.1.0",
@@ -211,7 +206,7 @@
     "draft-js": "^0.10.5",
     "electron-debug": "^2.0.0",
     "electron-log": "^2.2.17",
-    "electron-updater": "^3.2.3",
+    "electron-updater": "^4.0.0",
     "history": "^4.7.2",
     "node": "^11.10.0",
     "react": "^16.6.3",
@@ -228,9 +223,6 @@
     "node": ">=7.x",
     "npm": ">=4.x",
     "yarn": ">=0.21.3"
-  },
-  "collective": {
-    "url": "https://opencollective.com/electron-react-boilerplate-594"
   },
   "browserslist": "electron 1.6"
 }

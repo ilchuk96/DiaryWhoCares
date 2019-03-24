@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import PropTypes from 'prop-types';
-import Note from './Note';
+import Note from '../note/Note';
 import styles from './ListOfNotes.css'
 import axios from 'axios';
 
@@ -20,12 +20,12 @@ class ListOfNotes extends React.Component {
 
   render() {
     var notes = []
-    console.log(this.props);
     if(this.props && this.props.notes) {
       notes = this.props.notes;
     }
-    const listItems = notes.map((d, id) => <li key={d.name}>
-      <Note title={d.name} content={d.content} index={id}/></li>);
+    const listItems = notes.map((d, id) =>
+      <Note key={id} title={d.name} content={d.content} index={id}/>
+    );
 
     return (
       <div className={styles.list}>
@@ -34,6 +34,7 @@ class ListOfNotes extends React.Component {
     );
   }
 };
+
 ListOfNotes.propTypes = {
   changeContent: PropTypes.func.isRequired
 };

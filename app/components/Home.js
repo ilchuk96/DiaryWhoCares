@@ -1,8 +1,8 @@
 // @flow
 import React from 'react';
 import styles from './Home.css';
-import ListOfNotes from './notes/ListOfNotes'
-import NoteContent from './notes/NoteContent'
+import ListOfNotes from './notes_list/ListOfNotes'
+import NoteContent from './note_content/NoteContent'
 
 export default class Note extends React.Component {
 

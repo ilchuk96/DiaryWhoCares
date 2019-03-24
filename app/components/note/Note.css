@@ -1,0 +1,35 @@
+.note {
+    background-color: white;
+    height: 40pt;
+    border-width: 0 0 1pt 0;
+    border-color: gray;
+    border-style: solid;
+    cursor: pointer;
+}
+
+.note p {
+    font-size: 16pt;
+    color: gray;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.choosen_note {
+    background-color: white;
+    height: 40pt;
+    border-width: 0 0 1pt 0;
+    border-color: gray;
+    border-style: solid;
+    cursor: pointer;
+}
+
+.choosen_note p {
+    font-size: 16pt;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.note :focus p {
+    color: red;
+}
