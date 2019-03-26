@@ -18,7 +18,7 @@ class ListOfNotes extends React.Component {
   };
 
   render() {
-    var notes = []
+    var notes = [];
     if(this.props && this.props.notes) {
       notes = this.props.notes;
     }

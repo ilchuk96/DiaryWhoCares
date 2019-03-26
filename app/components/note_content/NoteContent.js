@@ -16,7 +16,7 @@ class ListOfNotes extends React.Component {
   render() {
 
     const changeContent = (e) => {
-      this.props.changeText(e.target.value);
+      this.props.changeText(this.props.currentNote, e.target.value);
     };
 
     var content = "";
