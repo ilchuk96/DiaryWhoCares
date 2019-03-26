@@ -19,9 +19,9 @@ if (!fs.existsSync(userDataPath)){
 
 function buildNewNote() {
   return {
-    title: 'title',
+    title: new Date().toLocaleDateString(),
     content: '',
-    time: '2019-03-04',
+    time: new Date().toISOString(),
     id: v1()
   }
 }

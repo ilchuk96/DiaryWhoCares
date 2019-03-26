@@ -23,7 +23,7 @@ class ListOfNotes extends React.Component {
       notes = this.props.notes;
     }
     const listItems = notes.map((d) =>
-      <Note key={d.id} title={d.name} content={d.content} index={d.id}/>
+      <Note key={d.id} title={d.title} content={d.content} index={d.id}/>
     );
     const addNewNote = <AddNewNote key="new_note" />
     listItems.unshift(addNewNote);

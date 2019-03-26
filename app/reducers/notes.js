@@ -3,7 +3,7 @@ import { SET_CURRENT_NOTE,
         CHANGE_TEXT,
         ADD_NOTES } from '../actions/notes';
 import type { Action } from './types';
-import { unionWith, orderBy, find, findIndex } from 'lodash';
+import { reverse, unionWith, orderBy, find, findIndex } from 'lodash';
 
 export default function note(state: object = {}, action: Action) {
   switch (action.type) {
@@ -28,7 +28,7 @@ export default function note(state: object = {}, action: Action) {
       var notes = action.notes;
       var prev_notes = state.notes ? state.notes : [];
       notes = unionWith(prev_notes, notes, (x, y) => x.id == y.id);
-      notes = orderBy(notes, ['time']);
+      notes = reverse(orderBy(notes, ['time']));
       state = Object.assign({}, state, {notes: notes});
       return state;
     default:
