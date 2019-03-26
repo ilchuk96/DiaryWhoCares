@@ -6,6 +6,7 @@ import electron from 'electron'
 import v1 from 'uuid';
 
 export const SET_CURRENT_NOTE = 'SET_CURRENT_NOTE';
+export const SET_CURRENT_FILM = 'SET_CURRENT_FILM';
 export const CHANGE_TEXT = 'CHANGE_TEXT';
 export const INIT_NOTES = 'INIT_NOTES';
 export const ADD_NOTES = 'ADD_NOTES';
@@ -41,7 +42,32 @@ export function setCurrentNote(index) {
   }
 }
 
+// export function setCurrentFilm(index) {
+//   return (dispatch: Dispatch) => {
+//     dispatch({
+//       type: SET_CURRENT_FILM,
+//       index
+//     });
+//   }
+// }
+
 export function loadNotes(pageNumber, pageSize) {
+  const app = (electron.app || electron.remote.app);
+  var notes = [];
+  const result = fs.readdirSync(userDataPath);
+  result.forEach(element => {
+    const file = fs.readFileSync(path.join(userDataPath, element));
+    notes.unshift(JSON.parse(file));
+  });
+  return (dispatch: Dispatch) => {
+    dispatch({
+      type: ADD_NOTES,
+      notes
+    });
+  }
+}
+
+export function loadFilm(pageNumber, pageSize) {
   const app = (electron.app || electron.remote.app);
   var notes = [];
   const result = fs.readdirSync(userDataPath);

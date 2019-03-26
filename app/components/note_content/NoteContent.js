@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import { changeText, changeTitle } from '../../actions/notes';
 import NoteText from './note_text/NoteText';
 import NoteTitle from './note_title/NoteTitle';
+import FilmContent from './film_content/FilmContent'
 
 class NoteContent extends React.Component {
 
@@ -35,6 +36,7 @@ class NoteContent extends React.Component {
       <div className={styles.container_text_editor} data-tid="cont1ainer">
         <NoteTitle content={title} onChange={changeTitle.bind(this)}/>
         <NoteText content={text} onChange={changeContent.bind(this)}/>
+        <FilmContent content={FilmContent} onChange={changeContent.bind(this)}/>
       </div>
     );
   }

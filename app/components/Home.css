@@ -1,6 +1,6 @@
 .container_notes {
-  position: absolute;
-  text-align: center;
+  /*position: absolute;*/
+  /*text-align: center;*/
   width: 20%;
   float: center;
   margin-left: 10pt;
@@ -9,10 +9,15 @@
 }
 
 .note_container_area {
-  position: relative;
-  text-align: center;
+  /*position: relative;*/
+  /*text-align: center;*/
   width: 80%;
   margin-right: -10pt;
   margin-top: -5pt;
   float: right;
+}
+
+.home {
+  display: flex;
+  flex-direction: row;
 }

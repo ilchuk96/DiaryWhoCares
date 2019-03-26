@@ -1,7 +1,9 @@
 // @flow
-import { SET_CURRENT_NOTE,
-        CHANGE_TEXT,
-        ADD_NOTES, CHANGE_TITLE } from '../actions/notes';
+import {
+  SET_CURRENT_NOTE,
+  CHANGE_TEXT,
+  ADD_NOTES, SET_CURRENT_FILM, CHANGE_TITLE
+} from '../actions/notes';
 import type { Action } from './types';
 import { reverse, unionWith, orderBy, find, findIndex } from 'lodash';
 import { statements } from '@babel/template';
@@ -13,6 +15,12 @@ export default function note(state: object = {}, action: Action) {
       var notes = state.notes;
       var currentNote = Object.assign({}, {}, find(notes, (x) => x.id===currentNoteIndex));
       state = Object.assign({}, state, {currentNote: currentNote, noteIndex: currentNoteIndex});
+      return state;
+    case SET_CURRENT_FILM:
+      var currentFilmIndex = action.index
+      var films = state.films;
+      var currentFilm = Object.assign({}, {}, find(notes, (x) => x.id===currentFilmIndex));
+      state = Object.assign({}, state, {currentNote: currentFilm, noteIndex: currentFilmIndex});
       return state;
     case CHANGE_TEXT:
       var notes = state.notes
