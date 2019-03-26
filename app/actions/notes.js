@@ -1,5 +1,4 @@
 import type { Dispatch } from '../reducers/types';
-import axios from 'axios';
 import path from 'path';
 import fs, { mkdir } from 'fs';
 import electron from 'electron'
@@ -13,6 +12,7 @@ export const INIT_NOTES = 'INIT_NOTES';
 export const ADD_NOTES = 'ADD_NOTES';
 export const ADD_NEW_NOTE = 'ADD_NEW_NOTE';
 export const REMOVE_NOTE = 'REMOVE_NOTE';
+
 
 
 const userDataPath = path.join((electron.app || electron.remote.app).getPath('userData'), 'diarywhocares');
