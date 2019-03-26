@@ -1,12 +1,14 @@
 // @flow
+<<<<<<< HEAD
 import {
   SET_CURRENT_NOTE,
   CHANGE_TEXT,
-  ADD_NOTES, SET_CURRENT_FILM, CHANGE_TITLE
+  ADD_NOTES, SET_CURRENT_FILM, REMOVE_NOTE
 } from '../actions/notes';
 import type { Action } from './types';
-import { reverse, unionWith, orderBy, find, findIndex } from 'lodash';
+import { filter, reverse, unionWith, orderBy, find, findIndex } from 'lodash';
 import { statements } from '@babel/template';
+import { routerActions } from 'connected-react-router';
 
 export default function note(state: object = {}, action: Action) {
   switch (action.type) {
@@ -39,6 +41,18 @@ export default function note(state: object = {}, action: Action) {
       notes = unionWith(notes, prev_notes, (x, y) => x.id == y.id);
       notes = reverse(orderBy(notes, ['time']));
       state = Object.assign({}, state, {notes: notes});
+      return state;
+    case REMOVE_NOTE:
+      var notes = state.notes;
+      var newNotes = filter(notes, (n) => {return n.id !== action.noteIndex});
+      notes = Object.assign([], [], newNotes);
+      if (state.notes && 
+        state.notes.currentNote && 
+        state.notes.currentNote.id === action.noteIndex) {
+          state.notes.currentNote = undefined;
+          state.notes.currentNoteIndex = undefined;
+        }
+      state = Object.assign({}, state, {notes:notes});
       return state;
     default:
       return state;

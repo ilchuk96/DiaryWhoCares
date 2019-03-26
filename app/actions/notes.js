@@ -4,6 +4,7 @@ import path from 'path';
 import fs, { mkdir } from 'fs';
 import electron from 'electron'
 import v1 from 'uuid';
+import { deleteFile } from 'fs-extra-p';
 
 export const SET_CURRENT_NOTE = 'SET_CURRENT_NOTE';
 export const SET_CURRENT_FILM = 'SET_CURRENT_FILM';
@@ -11,6 +12,7 @@ export const CHANGE_TEXT = 'CHANGE_TEXT';
 export const INIT_NOTES = 'INIT_NOTES';
 export const ADD_NOTES = 'ADD_NOTES';
 export const ADD_NEW_NOTE = 'ADD_NEW_NOTE';
+export const REMOVE_NOTE = 'REMOVE_NOTE';
 
 
 const userDataPath = path.join((electron.app || electron.remote.app).getPath('userData'), 'diarywhocares');
@@ -31,6 +33,12 @@ function saveNote(note) {
   const app = (electron.app || electron.remote.app);
   const notePath = path.join(userDataPath, note.id + '.json');
   fs.writeFileSync(notePath, JSON.stringify(note));
+}
+
+function deleteNote(noteIndex) {
+  const app = (electron.app || electron.remote.app);
+  const notePath = path.join(userDataPath, noteIndex + '.json');
+  fs.unlink(notePath, (e)=> {console.log(e)});
 }
 
 export function setCurrentNote(index) {
@@ -131,6 +139,16 @@ export function changeText(note, text) {
     dispatch({
       type: CHANGE_TEXT,
       text
+    });
+  };
+}
+
+export function removeNote(noteIndex) {
+  deleteNote(noteIndex);
+  return (dispatch: Dispatch) => {
+    dispatch({
+      type: REMOVE_NOTE,
+      noteIndex
     });
   };
 }

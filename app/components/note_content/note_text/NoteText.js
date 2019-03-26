@@ -12,18 +12,17 @@ export default class NoteText extends React.Component {
   render() {
     return (
       <div className={styles.container_text_editor} data-tid="cont1ainer">
-        <textarea value={this.props.content} onChange={this.props.onChange}></textarea>
+        <textarea value={this.props.content} onChange={this.props.changeText}></textarea>
       </div>
     );
   };
 };
 NoteText.defaultProps = {
-  content: '',
-  onChange: () => {}
+  content: ''
 };
 
 NoteText.propTypes = {
     content: PropTypes.string,
-    onChange: PropTypes.function
+    changeText: PropTypes.function
 };
 

@@ -17,12 +17,11 @@ export default class NoteTitle extends React.Component {
   };
 };
 NoteTitle.defaultProps = {
-  content: '',
-  onChange: () => {}
+  content: ''
 };
 
 NoteTitle.propTypes = {
     content: PropTypes.string,
-    onChange: PropTypes.function
+    changeTitle: PropTypes.function
 };
 
