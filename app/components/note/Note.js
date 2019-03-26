@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import store from '../../reducers/index';
 import { bindActionCreators } from 'redux';
-import { setCurrentNote } from '../../actions/notes';
+import { setCurrentNote, removeNote } from '../../actions/notes';
 
 import styles from './Note.css';
+import NoteRemover from './note_remover/NoteRemover';
 
 class Note extends React.Component {
 
@@ -23,7 +24,12 @@ class Note extends React.Component {
       console.log(content);
     };
 
+    const removeNote = () => {
+      this.props.removeNote(index);
+    };
+
     var style = styles.note;
+    var textStyle = styles.title;
 
     if(index == currentNoteIndex) {
       style = styles.choosen_note;
@@ -31,7 +37,8 @@ class Note extends React.Component {
 
     return (
       <div className={style} onClick={onClick} onKeyUp={handleKeyUp} role="presentation">
-        <p className={classes}> {title} </p>
+        <p className={textStyle}> {title} </p>
+        <NoteRemover onRemove={removeNote} />
       </div>
     );
   }
@@ -56,7 +63,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  chooseNote: bindActionCreators(setCurrentNote, dispatch)
+  chooseNote: bindActionCreators(setCurrentNote, dispatch),
+  removeNote: bindActionCreators(removeNote, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Note);

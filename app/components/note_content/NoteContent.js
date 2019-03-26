@@ -33,8 +33,8 @@ class NoteContent extends React.Component {
     }
     return (
       <div className={styles.container_text_editor} data-tid="cont1ainer">
-        <NoteTitle content={title} onChange={changeTitle.bind(this)}/>
-        <NoteText content={text} onChange={changeContent.bind(this)}/>
+        <NoteTitle content={title} changeTitle={changeTitle.bind(this)}/>
+        <NoteText content={text} changeText={changeContent.bind(this)}/>
       </div>
     );
   }
