@@ -11,7 +11,7 @@ export default class FilmTitle extends React.Component {
     render() {
         return (
             <div className={styles.title} data-tid="cont1ainer">
-                <textarea value={this.props.content} onChange={this.props.onChange}></textarea>
+                <textarea value={this.props.content}></textarea>
             </div>
         );
     };
@@ -21,6 +21,5 @@ FilmTitle.defaultProps = {
 };
 
 FilmTitle.propTypes = {
-    content: PropTypes.string,
-    changeTitle: PropTypes.function
+    content: PropTypes.string
 };

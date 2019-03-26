@@ -12,26 +12,17 @@ export default class FilmContent extends React.Component {
     }
 
     render() {
-
-        const changeContent = (e) => {
-            this.props.changeText(this.props.currentFilm, e.target.value);
-        };
-
-        const changeTitle = (e) => {
-            this.props.changeTitle(this.props.currentFilm, e.target.value);
-        };
-
         var text = '';
         var title = '';
-        if(this.props && this.props.currentFilm && this.props.currentFilm.content) {
-            text = this.props.currentFilm.content;
+        if(this.props && this.props.recomendation && this.props.recomendation.content) {
+            text = this.props.recomendation.content;
         }
-        if(this.props && this.props.currentFilm && this.props.currentFilm.title) {
-            title = this.props.currentFilm.title;
+        if(this.props && this.props.recomendation && this.props.recomendation.title) {
+            title = this.props.recomendation.title;
         }
         return (
             <div className={styles.container_text_editor} data-tid="cont1ainer">
-                <FilmTitle content={title} onChange={changeTitle.bind(this)}/>
+                <FilmTitle content={title}/>
             </div>
         );
     }
