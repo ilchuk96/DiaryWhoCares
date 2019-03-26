@@ -2,20 +2,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Note from '../note/Note';
+import AddNewNote from '../new_note/AddNewNote';
 import styles from './ListOfNotes.css'
-import axios from 'axios';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { initNotes } from '../../actions/notes';
+import { addNotes, loadNotes } from '../../actions/notes';
+
 
 class ListOfNotes extends React.Component {
 
   componentDidMount() {
-    axios.get('http://crypto-diary.com/events').then(response => {
-      this.props.initNotes(response.data);
-    });
+    this.props.loadNotes(1, 10);
   };
 
   render() {
@@ -23,10 +22,11 @@ class ListOfNotes extends React.Component {
     if(this.props && this.props.notes) {
       notes = this.props.notes;
     }
-    const listItems = notes.map((d, id) =>
-      <Note key={id} title={d.name} content={d.content} index={id}/>
+    const listItems = notes.map((d) =>
+      <Note key={d.id} title={d.name} content={d.content} index={d.id}/>
     );
-
+    const addNewNote = <AddNewNote key="new_note" />
+    listItems.unshift(addNewNote);
     return (
       <div className={styles.list}>
         {listItems}
@@ -45,7 +45,8 @@ const mapStateToProps = (state) => {
   }
 }
 const mapDispatchToProps = (dispatch) => ({
-  initNotes: bindActionCreators(initNotes, dispatch)
+  addNotes: bindActionCreators(addNotes, dispatch),
+  loadNotes: bindActionCreators(loadNotes, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListOfNotes);

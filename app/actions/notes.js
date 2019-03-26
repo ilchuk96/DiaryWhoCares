@@ -1,52 +1,65 @@
 import type { Dispatch } from '../reducers/types';
+import axios from 'axios';
 
 export const SET_CURRENT_NOTE = 'SET_CURRENT_NOTE';
-export const GET_CURRENT_NOTE = 'GET_CURRENT_NOTE';
 export const CHANGE_TEXT = 'CHANGE_TEXT';
 export const INIT_NOTES = 'INIT_NOTES';
-export const GET_ALL_NOTES = 'GET_ALL_NOTES';
+export const ADD_NOTES = 'ADD_NOTES';
+export const ADD_NEW_NOTE = 'ADD_NEW_NOTE';
 
 export function setCurrentNote(index) {
-    return (dispatch: Dispatch) => {
-      dispatch( {
-        type: SET_CURRENT_NOTE,
-        index
-      });
-    }
-}
-
-
-export function getCurrentNote(note) {
   return (dispatch: Dispatch) => {
-    dispatch( {
-      type: GET_CURRENT_NOTE
+    dispatch({
+      type: SET_CURRENT_NOTE,
+      index
     });
   }
 }
 
-export function initNotes(notes) {
+export function loadNotes(pageNumber, pageSize) {
   return (dispatch: Dispatch) => {
-    dispatch( {
-      type: INIT_NOTES,
+    axios.get(
+      `http://crypto-diary.com/events?pageSize=${pageSize};pageNumber=${pageNumber}`
+    ).then(response => {
+      dispatch({
+        type: ADD_NOTES,
+        notes: response.data
+      });
+    });
+  }
+}
+
+export function addNotes(notes) {
+  return (dispatch: Dispatch) => {
+    dispatch({
+      type: ADD_NOTES,
       notes
     });
   }
 }
 
-export function getAllNotes() {
+export function newNote() {
   return (dispatch: Dispatch) => {
-    dispatch( {
-      type: GET_ALL_NOTES
+    axios.get(
+      `http://crypto-diary.com/newNote`
+    ).then(response => {
+      dispatch({
+        type: ADD_NOTES,
+        notes: [ response.data ]
+      });
+      dispatch({
+        type: SET_CURRENT_NOTE,
+        index: response.data.id
+      });
     });
   }
 }
 
-
 export function changeText(text) {
   return (dispatch: Dispatch) => {
     dispatch({
-        type: CHANGE_TEXT,
-        text
-      });
+      type: CHANGE_TEXT,
+      text
+    });
   };
 }

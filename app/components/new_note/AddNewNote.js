@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import store from '../../reducers/index';
 import { bindActionCreators } from 'redux';
-import { setCurrentNote } from '../../actions/notes';
+import { newNote } from '../../actions/notes';
 
-import styles from './Note.css';
+import styles from './AddNewNote.css';
 
-class Note extends React.Component {
+class AddNewNote extends React.Component {
 
   render() {
 
@@ -16,7 +16,7 @@ class Note extends React.Component {
 
     const onClick = (e) => {
       e.preventDefault();
-      this.props.chooseNote(index);
+      this.props.newNote(index);
     };
 
     const handleKeyUp = () => {
@@ -24,7 +24,6 @@ class Note extends React.Component {
     };
 
     var style = styles.note;
-
     if(index == currentNoteIndex) {
       style = styles.choosen_note;
     }
@@ -37,13 +36,13 @@ class Note extends React.Component {
   }
 };
 
-Note.defaultProps = {
-    title: 'title',
+AddNewNote.defaultProps = {
+    title: 'New note',
     classes: '',
-    content: 'content'
+    content: ''
 };
 
-Note.propTypes = {
+AddNewNote.propTypes = {
     title: PropTypes.string,
     classes: PropTypes.string,
     content: PropTypes.string
@@ -56,7 +55,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  chooseNote: bindActionCreators(setCurrentNote, dispatch)
+  newNote: bindActionCreators(newNote, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Note);
+export default connect(mapStateToProps, mapDispatchToProps)(AddNewNote);

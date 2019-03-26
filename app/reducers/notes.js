@@ -1,29 +1,34 @@
 // @flow
-import { GET_ALL_NOTES,
-        SET_CURRENT_NOTE,
-        GET_CURRENT_NOTE,
+import { SET_CURRENT_NOTE,
         CHANGE_TEXT,
-        INIT_NOTES } from '../actions/notes';
+        ADD_NOTES } from '../actions/notes';
 import type { Action } from './types';
+import { unionWith, orderBy, find, findIndex } from 'lodash';
 
 export default function note(state: object = {}, action: Action) {
   switch (action.type) {
     case SET_CURRENT_NOTE:
       var currentNoteIndex = action.index
       var notes = state.notes;
-      var currentNote = Object.assign({}, {}, notes[currentNoteIndex]);
+      var currentNote = Object.assign({}, {}, find(notes, (x) => x.id===currentNoteIndex));
       state = Object.assign({}, state, {currentNote: currentNote, noteIndex: currentNoteIndex});
       return state;
     case CHANGE_TEXT:
       var notes = state.notes
       var currentNoteIndex = state.noteIndex
-      notes[currentNoteIndex].content = action.text;
+      console.log(currentNoteIndex);
+      var index = findIndex(notes, (x) => x.id === currentNoteIndex);
+      console.log(index);
+      notes[index].content = action.text;
       notes = Object.assign([], [], notes);
-      var currentNote = Object.assign({}, {}, notes[currentNoteIndex]);
+      var currentNote = Object.assign({}, {}, notes[index]);
       state = Object.assign({}, state, {currentNote: currentNote, notes: notes});
       return state;
-    case INIT_NOTES:
-      notes = action.notes;
+    case ADD_NOTES:
+      var notes = action.notes;
+      var prev_notes = state.notes ? state.notes : [];
+      notes = unionWith(prev_notes, notes, (x, y) => x.id == y.id);
+      notes = orderBy(notes, ['time']);
       state = Object.assign({}, state, {notes: notes});
       return state;
     default:
