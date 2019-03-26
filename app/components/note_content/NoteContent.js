@@ -33,11 +33,14 @@ class NoteContent extends React.Component {
         title = this.props.currentNote.title;
     }
     return (
-      <div className={styles.container_text_editor} data-tid="cont1ainer">
+        <div className={styles.container_content}>
+      <div className={styles.content} data-tid="cont1ainer">
         <NoteTitle content={title} onChange={changeTitle.bind(this)}/>
         <NoteText content={text} onChange={changeContent.bind(this)}/>
-        <FilmContent content={FilmContent} onChange={changeContent.bind(this)}/>
       </div>
+            <FilmContent recomendation={this.props.currentNote ? this.props.currentNote.recommendation : undefined} onChange={changeContent.bind(this)}/>
+
+        </div>
     );
   }
 

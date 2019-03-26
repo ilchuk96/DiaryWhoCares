@@ -2,10 +2,10 @@
 import React from 'react';
 import styles from './FilmContent.css'
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { changeText, changeTitle } from '../../../actions/notes';
+import FilmTitle from "./film_title/FilmTitle";
+import PropTypes from 'prop-types';
 
-class NoteContent extends React.Component {
+export default class FilmContent extends React.Component {
 
     constructor(props) {
         super(props);
@@ -14,38 +14,39 @@ class NoteContent extends React.Component {
     render() {
 
         const changeContent = (e) => {
-            this.props.changeText(this.props.currentNote, e.target.value);
+            this.props.changeText(this.props.currentFilm, e.target.value);
         };
 
         const changeTitle = (e) => {
-            this.props.changeTitle(this.props.currentNote, e.target.value);
+            this.props.changeTitle(this.props.currentFilm, e.target.value);
         };
 
         var text = '';
         var title = '';
-        if(this.props && this.props.currentNote && this.props.currentNote.content) {
-            text = this.props.currentNote.content;
+        if(this.props && this.props.currentFilm && this.props.currentFilm.content) {
+            text = this.props.currentFilm.content;
         }
-        if(this.props && this.props.currentNote && this.props.currentNote.title) {
-            title = this.props.currentNote.title;
+        if(this.props && this.props.currentFilm && this.props.currentFilm.title) {
+            title = this.props.currentFilm.title;
         }
         return (
             <div className={styles.container_text_editor} data-tid="cont1ainer">
-                
+                <FilmTitle content={title} onChange={changeTitle.bind(this)}/>
             </div>
         );
     }
 
 };
 
-const mapStateToProps = (state) => {
-    return {
-        currentNote: state.note.currentNote
+FilmContent.defaultProps = {
+    recomendation: {
+        title: '',
+        img: undefined,
+        description: ''
     }
-}
-const mapDispatchToProps = (dispatch) => ({
-    changeText: bindActionCreators(changeText, dispatch),
-    changeTitle: bindActionCreators(changeTitle, dispatch)
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(NoteContent);
+};
+
+FilmContent.propTypes = {
+    recommendation: PropTypes.object
+};

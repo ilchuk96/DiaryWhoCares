@@ -1,5 +1,4 @@
 // @flow
-<<<<<<< HEAD
 import {
   SET_CURRENT_NOTE,
   CHANGE_TEXT,

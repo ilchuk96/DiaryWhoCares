@@ -16,6 +16,7 @@ export default class Note extends React.Component {
         <div className={styles.note_container_area} data-tid="cont1ainer">
           <NoteContent id='note_content'/>
         </div>
+      </div>
     );
   }
 }
