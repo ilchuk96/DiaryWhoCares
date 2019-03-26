@@ -82,6 +82,21 @@ export function newNote() {
   }
 }
 
+export function changeTitle(note, title) {
+  note.title = title;
+  saveNote(note);
+  return (dispatch: Dispatch) => {
+    dispatch({
+      type: ADD_NOTES,
+      notes: [ note ]
+    });
+    dispatch({
+      type: SET_CURRENT_NOTE,
+      index: note.id
+    });
+  };
+}
+
 export function changeText(note, text) {
   var newNote = note;
   newNote.content = text;

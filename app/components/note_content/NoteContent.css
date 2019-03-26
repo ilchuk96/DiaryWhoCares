@@ -1,9 +1,5 @@
-.container_text_editor textarea {
-    width: 100%;
+.content {
+    display: flex;
+    flex-direction: column;
     height: 100vh;
-    margin-top: 0;
-    border-top-width: 0pt;
-    border-right-width: 0pt;
-    border-bottom-width: 0pt;
-    border-left-width: 1pt;
-}
+};

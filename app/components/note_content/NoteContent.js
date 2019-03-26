@@ -2,15 +2,15 @@
 import React from 'react';
 import styles from './NoteContent.css'
 import { connect } from 'react-redux';
-import store from '../../reducers/index';
 import { bindActionCreators } from 'redux';
-import { changeText } from '../../actions/notes';
+import { changeText, changeTitle } from '../../actions/notes';
+import NoteText from './note_text/NoteText';
+import NoteTitle from './note_title/NoteTitle';
 
-class ListOfNotes extends React.Component {
+class NoteContent extends React.Component {
 
   constructor(props) {
     super(props);
-    this.content = "";
   }
 
   render() {
@@ -19,13 +19,22 @@ class ListOfNotes extends React.Component {
       this.props.changeText(this.props.currentNote, e.target.value);
     };
 
-    var content = "";
+    const changeTitle = (e) => {
+      this.props.changeTitle(this.props.currentNote, e.target.value);
+    };
+
+    var text = '';
+    var title = '';
     if(this.props && this.props.currentNote && this.props.currentNote.content) {
-      content = this.props.currentNote.content;
+      text = this.props.currentNote.content;
+    }
+    if(this.props && this.props.currentNote && this.props.currentNote.title) {
+        title = this.props.currentNote.title;
     }
     return (
       <div className={styles.container_text_editor} data-tid="cont1ainer">
-        <textarea value={content} onChange={changeContent}></textarea>
+        <NoteTitle content={title} onChange={changeTitle.bind(this)}/>
+        <NoteText content={text} onChange={changeContent.bind(this)}/>
       </div>
     );
   }
@@ -38,7 +47,8 @@ const mapStateToProps = (state) => {
   }
 }
 const mapDispatchToProps = (dispatch) => ({
-  changeText: bindActionCreators(changeText, dispatch)
+  changeText: bindActionCreators(changeText, dispatch),
+  changeTitle: bindActionCreators(changeTitle, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListOfNotes);
+export default connect(mapStateToProps, mapDispatchToProps)(NoteContent);
