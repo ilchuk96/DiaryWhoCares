@@ -18,9 +18,7 @@ export default function note(state: object = {}, action: Action) {
     case CHANGE_TEXT:
       var notes = state.notes
       var currentNoteIndex = state.noteIndex
-      console.log(currentNoteIndex);
       var index = findIndex(notes, (x) => x.id === currentNoteIndex);
-      console.log(index);
       notes[index].content = action.text;
       notes = Object.assign([], [], notes);
       var currentNote = Object.assign({}, {}, notes[index]);
