@@ -35,8 +35,13 @@ export default function note(state: object = {}, action: Action) {
     case ADD_NOTES:
       var notes = action.notes;
       var prev_notes = state.notes ? state.notes : [];
+      var currentNote = state.currentNote;
       notes = unionWith(notes, prev_notes, (x, y) => x.id == y.id);
       notes = reverse(orderBy(notes, ['time']));
+      if (!currentNote && notes.length > 0) {
+        state.currentNote = notes[0];
+        state.noteIndex = notes[0].id;
+      }
       state = Object.assign({}, state, {notes: notes});
       return state;
     case REMOVE_NOTE:
