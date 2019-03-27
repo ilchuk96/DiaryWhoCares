@@ -28,6 +28,7 @@ export default function note(state: object = {}, action: Action) {
       var currentNoteIndex = state.noteIndex
       var index = findIndex(notes, (x) => x.id === currentNoteIndex);
       notes[index].content = action.text;
+      notes[index].recommendation = undefined;
       notes = Object.assign([], [], notes);
       var currentNote = Object.assign({}, {}, notes[index]);
       state = Object.assign({}, state, {currentNote: currentNote, notes: notes});

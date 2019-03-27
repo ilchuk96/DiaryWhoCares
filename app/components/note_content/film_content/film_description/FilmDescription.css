@@ -2,7 +2,7 @@
     width: 90%;
     height: 40vh;
     min-height: 30vh;
-    resize: vertical;
+    resize: none;
     max-height: 40vh;
     font-size: 14pt;
     border-top-width: 0pt;
