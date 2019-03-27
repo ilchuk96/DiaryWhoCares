@@ -11,7 +11,7 @@ import axios from 'axios';
 import Center from './center/Center';
 
 
-const recomendationURI = 'http://172.31.2.213:8080/recomendation';
+const recomendationURI = 'http://172.31.2.213/';
 
 class NoteContent extends React.Component {
 
@@ -24,7 +24,7 @@ class NoteContent extends React.Component {
     const getRecomendation = () => {
         var self = this;
         var note = this.props.currentNote;
-        axios.post(recomendationURI, {text: note.text}).then((response) => {
+        axios.post(recomendationURI, {text: note.content}).then((response) => {
             var recomendation = response.data;
             console.log(recomendation);
             note.recommendation = {
@@ -34,6 +34,7 @@ class NoteContent extends React.Component {
             };
             console.log(note);
             self.props.addNotes([note]);
+            self.props.changeText(note, note.content);
           }
         ).catch((e) => {
             console.log(e);

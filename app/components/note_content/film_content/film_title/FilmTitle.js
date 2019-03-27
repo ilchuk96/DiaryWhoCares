@@ -11,7 +11,7 @@ export default class FilmTitle extends React.Component {
     render() {
         return (
             <div className={styles.title} data-tid="cont1ainer">
-                <textarea value={this.props.content} readonly></textarea>
+                <textarea value={this.props.content} readOnly></textarea>
             </div>
         );
     };
