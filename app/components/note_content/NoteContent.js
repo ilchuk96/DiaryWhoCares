@@ -8,9 +8,10 @@ import NoteText from './note_text/NoteText';
 import NoteTitle from './note_title/NoteTitle';
 import FilmContent from './film_content/FilmContent'
 import axios from 'axios';
+import Center from './center/Center';
 
 
-const recomendationURI = 'http://172.31.2.213:80/recomendation';
+const recomendationURI = 'http://172.31.2.213:8080/recomendation';
 
 class NoteContent extends React.Component {
 
@@ -20,12 +21,12 @@ class NoteContent extends React.Component {
 
   getRecomendation(note) {
     var self = this;
-    axios.get(recomendationURI).then((response) => {
+    axios.post(recomendationURI, {text: note.text}).then((response) => {
         var recomendation = response.data;
         console.log(recomendation);
         note.recommendation = {
           title: recomendation.title,
-          img: recomendation.img,
+          img: "data:image/jpeg;base64," + recomendation.img,
           description: recomendation.description
         };
         console.log(note);
@@ -59,12 +60,14 @@ class NoteContent extends React.Component {
     }
     return (
         <div className={styles.container_content}>
-      <div className={styles.content} data-tid="cont1ainer">
-        <NoteTitle content={title} changeTitle={changeTitle.bind(this)}/>
-        <NoteText content={text} changeText={changeContent.bind(this)}/>
-      </div>
+        <div className={styles.content_container_margin} >
+            <div className={styles.content} data-tid="cont1ainer">
+                <NoteTitle content={title} changeTitle={changeTitle.bind(this)}/>
+                <NoteText content={text} changeText={changeContent.bind(this)}/>
+            </div>
+        </div>
+            <Center/>
             <FilmContent recomendation={this.props.currentNote ? this.props.currentNote.recommendation : undefined} onChange={changeContent.bind(this)}/>
-
         </div>
     );
   }

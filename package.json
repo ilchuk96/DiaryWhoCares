@@ -1,10 +1,10 @@
 {
-  "name": "crypto-diary",
-  "productName": "CryptoDiary",
+  "name": "diary-who-cares",
+  "productName": "DiaryWhoCares",
   "version": "0.1.0",
   "author": "awemath <dart.fk712@gmail.com>",
-  "homepage": "https://crypto-diary.com",
-  "description": "Electron applicatoin for your diary to keep it private.",
+  "homepage": "https://diary-who-cares.com",
+  "description": "Electron applicatoin for your diary with movies recomendation.",
   "scripts": {
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
     "build-dll": "cross-env NODE_ENV=development webpack --config ./configs/webpack.config.renderer.dev.dll.babel.js --colors",

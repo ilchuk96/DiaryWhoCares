@@ -28,10 +28,12 @@ export default class FilmContent extends React.Component {
             image = this.props.recomendation.img;
         }
         return (
+            <div className={styles.content_margin} >
             <div className={styles.container_text_editor} data-tid="cont1ainer">
                 <FilmTitle content={title}/>
                 <FilmImage content={image} />
                 <FilmDescriptoin content={text}/>
+            </div>
             </div>
         );
     }

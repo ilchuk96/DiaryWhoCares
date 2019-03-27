@@ -8,3 +8,9 @@
     border-style: solid;
     border-color: gray;
 }
+
+.film_image img {
+    height: 30vh;
+    min-height: 30vh;
+    max-height: 30vh;
+}
