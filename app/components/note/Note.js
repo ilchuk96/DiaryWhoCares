@@ -20,6 +20,8 @@ class Note extends React.Component {
       this.props.chooseNote(index);
     };
 
+    var titleInner = title;
+
     const handleKeyUp = () => {
       console.log(content);
     };
@@ -36,10 +38,13 @@ class Note extends React.Component {
       style = styles.choosen_note;
       backgroundColor = "#FFF7D0";
     }
+    if(titleInner && titleInner.length > 12) {
+      titleInner = titleInner.substring(0, 12) + "..."
+    }
 
     return (
       <div style={{backgroundColor: backgroundColor}} className={style} onClick={onClick} onKeyUp={handleKeyUp} role="presentation">
-        <p className={textStyle}> {title} </p>
+        <p className={textStyle}> {titleInner} </p>
         <NoteRemover onRemove={removeNote} />
       </div>
     );

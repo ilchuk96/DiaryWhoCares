@@ -11,7 +11,7 @@ import axios from 'axios';
 import Center from './center/Center';
 
 
-const recomendationURI = 'http://172.31.2.213/';
+const recomendationURI = 'http://diarywhocares.tk/';
 
 class NoteContent extends React.Component {
 

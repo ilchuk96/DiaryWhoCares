@@ -10,7 +10,7 @@ export default class FilmImage extends React.Component {
 
     render() {
         return (
-            <div className={styles.description} data-tid="cont1ainer">
+            <div className={styles.film_image} data-tid="cont1ainer">
                 <img src={this.props.content}></img>
             </div>
         );

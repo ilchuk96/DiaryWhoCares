@@ -71,9 +71,9 @@ app.on('ready', async () => {
     show: false,
     width: 1024,
     height: 728,
-    minHeight: 600,
-    minWidth: 400,
-    icon: "../img/icon.png"
+    minHeight: 400,
+    minWidth: 600,
+    icon: __dirname + "img/icon.png"
   });
 
   mainWindow.loadURL(`file://${__dirname}/app.html`);

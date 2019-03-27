@@ -1,16 +1,14 @@
 .film_image {
-    width: 90%;
-    height: 30vh;
-    min-height: 30vh;
-    margin-left: auto;
-    margin-right: auto;
-    border-width: 1pt 0 1pt 0;
-    border-style: solid;
-    border-color: gray;
+    height: 43vh;
+    min-height: 43vh;
 }
 
+
 .film_image img {
-    height: 30vh;
-    min-height: 30vh;
-    max-height: 30vh;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40vh;
+    min-height: 40vh;
+    max-height: 40vh;
 }

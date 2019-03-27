@@ -1,9 +1,8 @@
 .center {
     background-repeat: no-repeat;
     height: 100vh;
-    min-width: 20vw;
-    max-width: 20vw;
     width: 20vw;
+    max-width: 308px;
     background-size: cover;
 }
 

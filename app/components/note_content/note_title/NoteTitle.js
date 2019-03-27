@@ -11,7 +11,7 @@ export default class NoteTitle extends React.Component {
   render() {
     return (
       <div className={styles.title} data-tid="cont1ainer">
-        <textarea value={this.props.content} onChange={this.props.changeTitle}></textarea>
+        <input value={this.props.content} onChange={this.props.changeTitle}></input>
       </div>
     );
   };
