@@ -19,30 +19,29 @@ class NoteContent extends React.Component {
     super(props);
   }
 
-  getRecomendation(note) {
-    var self = this;
-    axios.post(recomendationURI, {text: note.text}).then((response) => {
-        var recomendation = response.data;
-        console.log(recomendation);
-        note.recommendation = {
-          title: recomendation.title,
-          img: "data:image/jpeg;base64," + recomendation.img,
-          description: recomendation.description
-        };
-        console.log(note);
-        self.props.addNotes([note]);
-      }
-    ).catch((e) => {
-        console.log(e);
-      }
-    );
-  }
-
   render() {
 
+    const getRecomendation = () => {
+        var self = this;
+        var note = this.props.currentNote;
+        axios.post(recomendationURI, {text: note.text}).then((response) => {
+            var recomendation = response.data;
+            console.log(recomendation);
+            note.recommendation = {
+              title: recomendation.title,
+              img: recomendation.img ? "data:image/jpeg;base64," + recomendation.img : undefined,
+              description: recomendation.description
+            };
+            console.log(note);
+            self.props.addNotes([note]);
+          }
+        ).catch((e) => {
+            console.log(e);
+          }
+        );
+      }; 
+
     const changeContent = (e) => {
-        console.log("change");
-      this.getRecomendation(this.props.currentNote);
       this.props.changeText(this.props.currentNote, e.target.value);
     };
 
@@ -67,7 +66,8 @@ class NoteContent extends React.Component {
             </div>
         </div>
             <Center/>
-            <FilmContent recomendation={this.props.currentNote ? this.props.currentNote.recommendation : undefined} onChange={changeContent.bind(this)}/>
+            <FilmContent recomendation={this.props.currentNote ? this.props.currentNote.recommendation : undefined} 
+                onClick={getRecomendation.bind(this)}/>
         </div>
     );
   }

@@ -7,5 +7,8 @@
     border-bottom-width: 0pt;
     border-left-width: 0pt;
     outline: none;
+    font-family: 'Caveat', cursive;
+    font-size: 25pt;
+    margin-left: 10pt;
     background-color: rgba(0, 0, 0, 0);
 }

@@ -6,6 +6,7 @@ import FilmTitle from "./film_title/FilmTitle";
 import FilmImage from "./film_image/FilmImage";
 import PropTypes from 'prop-types';
 import FilmDescriptoin from './film_description/FilmDescription';
+import Button from './recomendation_button/Button'
 
 export default class FilmContent extends React.Component {
 
@@ -14,9 +15,9 @@ export default class FilmContent extends React.Component {
     }
 
     render() {
-        var text = '';
-        var title = '';
-        var image = '';
+        var text = undefined;
+        var title = undefined;
+        var image = undefined;
         if(this.props && this.props.recomendation && this.props.recomendation.description) {
             text = this.props.recomendation.description;
         }
@@ -27,28 +28,31 @@ export default class FilmContent extends React.Component {
         if(this.props && this.props.recomendation && this.props.recomendation.img) {
             image = this.props.recomendation.img;
         }
-        return (
-            <div className={styles.content_margin} >
-            <div className={styles.container_text_editor} data-tid="cont1ainer">
-                <FilmTitle content={title}/>
-                <FilmImage content={image} />
-                <FilmDescriptoin content={text}/>
-            </div>
-            </div>
-        );
+        if(title) {
+            return (
+                <div className={styles.content_margin} >
+                <div className={styles.container_text_editor} data-tid="cont1ainer">
+                    <FilmTitle content={title}/>
+                    <FilmImage content={image} />
+                    <FilmDescriptoin content={text}/>
+                </div>
+                </div>
+            );
+        } else {
+            return (
+                <div className={styles.content_margin}>
+                    <Button onClick={this.props.onClick}></Button>
+                 </div>
+            )
+        }
     }
 
 };
 
 FilmContent.defaultProps = {
-    recomendation: {
-        title: '',
-        img: undefined,
-        description: ''
-    }
-
 };
 
 FilmContent.propTypes = {
-    recommendation: PropTypes.object
+    recommendation: PropTypes.object,
+    onClick: PropTypes.func
 };

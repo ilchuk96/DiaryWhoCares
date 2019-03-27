@@ -1,0 +1,21 @@
+.button_container {
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.button {
+    background-color: rgba(0, 0, 0, 0);
+    margin: 50% 50% 50% auto;
+    height: 10%;
+    min-width: 150pt;
+    width: 150pt;
+    cursor: pointer;
+    text-align: center;
+}
+
+.button p {
+    color: black;
+    margin: auto auto auto auto;
+    font-family: 'Caveat', cursive;
+    font-size: 30pt;
+}

@@ -24,9 +24,6 @@ class AddNewNote extends React.Component {
     };
 
     var style = styles.note;
-    if(index == currentNoteIndex) {
-      style = styles.choosen_note;
-    }
 
     return (
       <div className={style} onClick={onClick} onKeyUp={handleKeyUp} role="presentation">

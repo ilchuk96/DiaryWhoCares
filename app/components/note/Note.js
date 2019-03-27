@@ -30,13 +30,15 @@ class Note extends React.Component {
 
     var style = styles.note;
     var textStyle = styles.title;
+    var backgroundColor = undefined;
 
     if(index == currentNoteIndex) {
       style = styles.choosen_note;
+      backgroundColor = "#0282c2";
     }
 
     return (
-      <div className={style} onClick={onClick} onKeyUp={handleKeyUp} role="presentation">
+      <div style={{backgroundColor: backgroundColor}} className={style} onClick={onClick} onKeyUp={handleKeyUp} role="presentation">
         <p className={textStyle}> {title} </p>
         <NoteRemover onRemove={removeNote} />
       </div>

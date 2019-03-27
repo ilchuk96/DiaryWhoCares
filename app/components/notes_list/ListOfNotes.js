@@ -41,7 +41,8 @@ ListOfNotes.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    notes: state.note.notes
+    notes: state.note.notes,
+    currentNote: state.note.currentNote
   }
 }
 const mapDispatchToProps = (dispatch) => ({
