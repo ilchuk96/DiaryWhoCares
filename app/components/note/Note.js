@@ -34,7 +34,7 @@ class Note extends React.Component {
 
     if(index == currentNoteIndex) {
       style = styles.choosen_note;
-      backgroundColor = "#0282c2";
+      backgroundColor = "#FFF7D0";
     }
 
     return (
