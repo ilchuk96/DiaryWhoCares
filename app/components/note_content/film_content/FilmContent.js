@@ -3,7 +3,9 @@ import React from 'react';
 import styles from './FilmContent.css'
 import { connect } from 'react-redux';
 import FilmTitle from "./film_title/FilmTitle";
+import FilmImage from "./film_image/FilmImage";
 import PropTypes from 'prop-types';
+import FilmDescriptoin from './film_description/FilmDescription';
 
 export default class FilmContent extends React.Component {
 
@@ -14,15 +16,22 @@ export default class FilmContent extends React.Component {
     render() {
         var text = '';
         var title = '';
-        if(this.props && this.props.recomendation && this.props.recomendation.content) {
-            text = this.props.recomendation.content;
+        var image = '';
+        if(this.props && this.props.recomendation && this.props.recomendation.description) {
+            text = this.props.recomendation.description;
         }
         if(this.props && this.props.recomendation && this.props.recomendation.title) {
             title = this.props.recomendation.title;
         }
+        
+        if(this.props && this.props.recomendation && this.props.recomendation.img) {
+            image = this.props.recomendation.img;
+        }
         return (
             <div className={styles.container_text_editor} data-tid="cont1ainer">
                 <FilmTitle content={title}/>
+                <FilmImage content={image} />
+                <FilmDescriptoin content={text}/>
             </div>
         );
     }

@@ -5,9 +5,8 @@
     font-size: 18pt;
     margin-top: 5pt;
     margin-left: 10pt;
-    border-top-width: 0pt;
-    border-right-width: 0pt;
-    border-bottom-width: 0pt;
-    border-left-width: 0pt;
+    border-width: 0 0 0 0;
     font-family: Arial, Helvetica, sans-serif;
+    outline: none;
+    
 }

@@ -1,25 +1,25 @@
 // @flow
 import React from 'react';
-import styles from './FilmTitle.css'
+import styles from './FilmDescription.css'
 import PropTypes from 'prop-types';
 
-export default class FilmTitle extends React.Component {
+export default class FilmDescriptoin extends React.Component {
     constructor(props) {
         super(props);
     }
 
     render() {
         return (
-            <div className={styles.title} data-tid="cont1ainer">
+            <div className={styles.description} data-tid="cont1ainer">
                 <textarea value={this.props.content} readonly></textarea>
             </div>
         );
     };
 };
-FilmTitle.defaultProps = {
+FilmDescriptoin.defaultProps = {
     content: ''
 };
 
-FilmTitle.propTypes = {
+FilmDescriptoin.propTypes = {
     content: PropTypes.string
 };

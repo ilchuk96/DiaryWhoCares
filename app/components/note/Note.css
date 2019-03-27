@@ -1,5 +1,7 @@
 .note {
     background-color: white;
+    min-height: 40pt;
+    max-height: 40pt;
     height: 40pt;
     border-width: 0 0 1pt 0;
     border-color: gray;
@@ -19,6 +21,9 @@
 
 .choosen_note {
     background-color: white;
+    height: 40pt;
+    min-height: 40pt;
+    max-height: 40pt;
     height: 40pt;
     border-width: 0 0 1pt 0;
     border-color: gray;
