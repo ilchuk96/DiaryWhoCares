@@ -12,4 +12,3 @@ node: версия v10.15.3 и выше
 Сборка под linux: `yarn package-linux`
 
 Сборка под windows: `yarn package-win`
-
