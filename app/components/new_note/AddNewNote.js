@@ -34,7 +34,7 @@ class AddNewNote extends React.Component {
 };
 
 AddNewNote.defaultProps = {
-    title: 'New note',
+    title: 'Новая запись',
     classes: '',
     content: ''
 };
