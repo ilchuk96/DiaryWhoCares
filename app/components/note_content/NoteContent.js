@@ -11,7 +11,7 @@ import axios from 'axios';
 import Center from './center/Center';
 
 
-const recomendationURI = 'https://diarywhocares.tk/';
+const recomendationURI = 'https://diarywhocares.tk/api';
 
 class NoteContent extends React.Component {
 

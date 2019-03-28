@@ -17,7 +17,7 @@ export default class FilmImage extends React.Component {
     };
 };
 FilmImage.defaultProps = {
-    content: ''
+    content: require("../../../../../img/default.jpg")
 };
 
 FilmImage.propTypes = {
