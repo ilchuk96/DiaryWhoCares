@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './NoteContent.css'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { changeText, changeTitle, addNotes } from '../../actions/notes';
+import { changeText, changeTitle, addNotes, setCurrentNote  } from '../../actions/notes';
 import NoteText from './note_text/NoteText';
 import NoteTitle from './note_title/NoteTitle';
 import FilmContent from './film_content/FilmContent'
@@ -11,7 +11,7 @@ import axios from 'axios';
 import Center from './center/Center';
 
 
-const recomendationURI = 'http://diarywhocares.tk/';
+const recomendationURI = 'https://diarywhocares.tk/';
 
 class NoteContent extends React.Component {
 
@@ -34,7 +34,7 @@ class NoteContent extends React.Component {
             };
             console.log(note);
             self.props.addNotes([note]);
-            self.props.changeText(note, note.content);
+            this.props.chooseNote(note.id);
           }
         ).catch((e) => {
             console.log(e);
@@ -81,6 +81,7 @@ const mapStateToProps = (state) => {
   }
 }
 const mapDispatchToProps = (dispatch) => ({
+  chooseNote: bindActionCreators(setCurrentNote, dispatch),
   changeText: bindActionCreators(changeText, dispatch),
   changeTitle: bindActionCreators(changeTitle, dispatch),
   addNotes: bindActionCreators(addNotes, dispatch)
