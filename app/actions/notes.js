@@ -134,6 +134,7 @@ export function changeTitle(note, title) {
 export function changeText(note, text) {
   var newNote = note;
   newNote.content = text;
+  newNote.recommendation = undefined;
   saveNote(newNote);
   return (dispatch: Dispatch) => {
     dispatch({
