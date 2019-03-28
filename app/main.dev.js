@@ -71,8 +71,8 @@ app.on('ready', async () => {
     show: false,
     width: 1024,
     height: 728,
-    minHeight: 400,
-    minWidth: 600,
+    minHeight: 460,
+    minWidth: 700,
     icon: __dirname + "img/icon.png"
   });
 
