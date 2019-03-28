@@ -66,7 +66,7 @@ app.on('ready', async () => {
   ) {
     await installExtensions();
   }
-  
+
   mainWindow = new BrowserWindow({
     show: false,
     width: 1024,
