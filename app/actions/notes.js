@@ -92,6 +92,7 @@ export function loadFilm(pageNumber, pageSize) {
 }
 
 export function addNotes(notes) {
+  notes.forEach(saveNote);
   return (dispatch: Dispatch) => {
     dispatch({
       type: ADD_NOTES,

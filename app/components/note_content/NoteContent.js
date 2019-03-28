@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { changeText, changeTitle, addNotes, setCurrentNote  } from '../../actions/notes';
 import NoteText from './note_text/NoteText';
 import NoteTitle from './note_title/NoteTitle';
-import FilmContent from './film_content/FilmContent'
+import FilmRecommendations from './film_content/FilmRecommendations'
 import axios from 'axios';
 import Center from './center/Center';
 
@@ -25,14 +25,12 @@ class NoteContent extends React.Component {
         var self = this;
         var note = this.props.currentNote;
         axios.post(recomendationURI, {text: note.content}).then((response) => {
-            var recomendation = response.data;
-            console.log(recomendation);
-            note.recommendation = {
-              title: recomendation.title,
-              img: recomendation.img ? "data:image/jpeg;base64," + recomendation.img : undefined,
-              description: recomendation.description
-            };
-            console.log(note);
+            var recommendations = response.data;
+            note.recommendation = recommendations.map((recommendation)=>{return {
+              title: recommendation.title,
+              img: recommendation.img ? "data:image/jpeg;base64," + recommendation.img : undefined,
+              description: recommendation.description
+            }});
             self.props.addNotes([note]);
             this.props.chooseNote(note.id);
           }
@@ -67,7 +65,7 @@ class NoteContent extends React.Component {
             </div>
         </div>
             <Center/>
-            <FilmContent recomendation={this.props.currentNote ? this.props.currentNote.recommendation : undefined} 
+            <FilmRecommendations recommendations={this.props.currentNote ? this.props.currentNote.recommendation : undefined} 
                 onClick={getRecomendation.bind(this)}/>
         </div>
     );

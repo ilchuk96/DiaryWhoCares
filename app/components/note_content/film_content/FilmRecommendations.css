@@ -1,9 +1,6 @@
-.content {
+.recommendations_with_arrows {
     display: flex;
-    flex-direction: column;
-    height: 100%;
-    overflow-y: scroll;
-    width: 90%;
+    flex-direction: row;
 }
 
 .content_margin {
@@ -12,4 +9,8 @@
     background-size: 100% 100%;
     height: 100vh;
     width: 40vw;
+}
+
+.recommendations {
+    width: 80%;
 }

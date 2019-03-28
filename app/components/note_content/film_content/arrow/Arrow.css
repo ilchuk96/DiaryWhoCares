@@ -1,0 +1,11 @@
+.arrow {
+    width: 10%;
+    
+    line-height: 50vh;
+}
+
+.arrow img {
+    cursor: pointer;
+    width: 100%;
+    vertical-align: middle;
+}
