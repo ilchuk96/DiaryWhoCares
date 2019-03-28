@@ -12,7 +12,7 @@ export default class FilmTitle extends React.Component {
         return (
             <div className={styles.button_container}>
             <div className={styles.button} onClick={this.props.onClick} data-tid="cont1ainer">
-                <p>Получть рекомендацию</p>
+                <p>Получить рекомендацию</p>
             </div>
             </div>
         );

@@ -100,7 +100,8 @@
     "directories": {
       "buildResources": "resources",
       "output": "release"
-    }
+    },
+    "icon": "./img/icon.png"
   },
   "jest": {
     "testURL": "http://localhost/",
